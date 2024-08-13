@@ -23,6 +23,7 @@ const move = (page) => {
 };
 
 const initPagination = (totalResults) => {
+  currentPage = 1;
   totalPage = Math.ceil(totalResults / pageSize);
   pageGroup = 0;
   updatePagination();
