@@ -1,6 +1,6 @@
 const config = {
   api: {
-    baseurl: '',
+    baseurl: 'https://bookbook-server.vercel.app',
   },
 };
 
