@@ -2,6 +2,7 @@ import { renderBookList } from './book.js';
 import { keyword } from './searchForm.js';
 
 const $pagination = document.querySelector('.pagination');
+const $pages = $pagination.querySelector('.pages');
 const $prev = $pagination.querySelector('.prev');
 const $next = $pagination.querySelector('.next');
 
@@ -32,8 +33,6 @@ const makePageButton = (page) => {
 
   $button.textContent = page;
   $button.addEventListener('click', () => {
-    $pagination.querySelector('.on').classList.remove('on');
-    $button.classList.add('on');
     move(page);
   });
 
@@ -41,27 +40,25 @@ const makePageButton = (page) => {
 };
 
 const renderPagination = () => {
-  const $pages = $pagination.querySelector('.pages');
-
   const firstPage = (pageGroup - 1) * groupSize + 1;
   const lastPage = Math.min(totalPage, pageGroup * groupSize);
 
   $pages.innerHTML = '';
   for (let idx = firstPage; idx <= lastPage; idx++) {
     const $page = makePageButton(idx);
-    if (idx === firstPage) {
-      $page.classList.add('on');
-    }
     $pages.appendChild($page);
   }
 };
 const updatePagination = () => {
   const currentPageGroup = updatePageGroup(currentPage);
-
   if (currentPageGroup !== pageGroup) {
     pageGroup = currentPageGroup;
     renderPagination();
   }
+  Array.from($pages.children).forEach(($page, idx) => {
+    const page = (pageGroup - 1) * groupSize + (idx + 1);
+    $page.classList.toggle('on', page === currentPage);
+  });
 
   $prev.disabled = currentPage === 1;
   $next.disabled = currentPage === totalPage;

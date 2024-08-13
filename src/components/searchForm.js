@@ -18,7 +18,9 @@ const handleSearch = () => {
     value.length < MIN_KEYWORD_LENGTH ||
     value.length > MAX_KEYWORD_LENGTH
   ) {
-    throw new Error('⛔ 최소 1글자이상, 최대 30글자까지 입력할 수 있습니다.');
+    throw new Error(
+      `⛔ 최소 ${MIN_KEYWORD_LENGTH}글자이상, 최대 ${MAX_KEYWORD_LENGTH}글자까지 입력할 수 있습니다.`,
+    );
   }
 
   keyword = value;
