@@ -38,7 +38,7 @@ const createBookElement = (book) => {
 	  </p>
 	  <p class="price">${priceStandard.toLocaleString()}원</p>
 	  <p>
-      <span class="author">${author}</span> /
+      <span class="author">${author.replace(/\(.+\)/g, '').split(', ')[0]}</span> /
       <span class="publisher">${publisher}</span>
 	  </p>
 	  <a class="more" href="${link}" target="_blank">자세히보기</a>

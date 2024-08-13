@@ -1,17 +1,17 @@
 @charset "UTF-8";
 
 :root {
-  --color-primary: #ebd19d;
-  --color-primary-light: #f6efdf;
-  --color-secondary: #3f97af;
-  --color-secondary-light: #8fdbef;
-  --color-ivory: #f9f8f5;
-  --color-white: #ffffff;
-  --color-black: #1c1917;
-  --gray-100: #f5f5f4;
-  --gray-300: #d6d3d1;
-  --gray-500: #78716c;
-  --gray-700: #44403c;
+  --color-primary: 235, 209, 157;
+  --color-primary-light: 246, 239, 223;
+  --color-secondary: 63, 151, 175;
+  --color-secondary-light: 143, 219, 239;
+  --color-ivory: 249, 248, 245;
+  --color-white: 255, 255, 255;
+  --color-black: 28, 25, 23;
+  --gray-100: 245, 245, 244;
+  --gray-300: 214, 211, 209;
+  --gray-500: 120, 113, 108;
+  --gray-700: 68, 64, 60;
 
   --max-width: 1024px;
   --padding-default: 1rem;
@@ -51,7 +51,7 @@ h1 {
 
 /* Header */
 .header {
-  background-color: var(--color-ivory);
+  background-color: rgb(var(--color-ivory));
   box-shadow: var(--shadow-medium);
   padding: var(--padding-default);
 }
@@ -77,7 +77,7 @@ h1 {
   width: 100%;
   border-radius: 1rem;
   border: 2px solid transparent;
-  background-color: var(--color-white);
+  background-color: rgb(var(--color-white));
   box-shadow: var(--shadow-small);
   position: relative;
   transition: border-color 0.3s;
@@ -92,22 +92,22 @@ h1 {
   top: 1rem;
   left: 1rem;
   cursor: text;
-  color: var(--gray-300);
+  color: rgb(var(--gray-300));
 }
 .header .searchForm input:not(:placeholder-shown) ~ label {
   display: none;
 }
 .header .searchForm:has(input:focus) {
-  border-color: var(--color-primary);
+  border-color: rgb(var(--color-primary));
 }
 .header .searchForm button {
-  color: var(--color-primary);
+  color: rgb(var(--color-primary));
   padding: var(--padding-default) calc(var(--padding-default) * 1.25);
 }
 .header .bookmarkOpenBtn {
   padding: var(--padding-default);
   font-size: var(--font-extra-large);
-  color: var(--color-primary);
+  color: rgb(var(--color-primary));
 }
 @media (max-width: 768px) {
   .headerInner {
@@ -153,7 +153,7 @@ main .searchResult {
 }
 main .searchResult .keyword {
   font-weight: bold;
-  color: var(--color-secondary);
+  color: rgb(var(--color-secondary));
 }
 main .searchResult.on {
   display: block;
@@ -171,12 +171,12 @@ main .pagination button {
   height: 2rem;
 }
 main .pagination > button:disabled {
-  color: var(--gray-300);
+  color: rgb(var(--gray-300));
   cursor: default;
 }
 main .pages button.on {
-  background-color: var(--color-secondary);
-  color: var(--color-ivory);
+  background-color: rgb(var(--color-secondary));
+  color: rgb(var(--color-ivory));
 }
 
 /* Modal */
@@ -201,7 +201,7 @@ main .pages button.on {
   pointer-events: all;
 }
 #bookmarkModal {
-  background-color: var(--color-ivory);
+  background-color: rgb(var(--color-ivory));
   max-width: var(--max-width);
   width: calc(100% - var(--padding-default));
   height: 80%;
@@ -215,8 +215,8 @@ main .pages button.on {
   justify-content: space-between;
   align-items: center;
   padding: var(--padding-default);
-  background-color: var(--color-primary);
-  border-bottom: 5px solid var(--color-secondary);
+  background-color: rgb(var(--color-primary));
+  border-bottom: 5px solid rgb(var(--color-secondary));
 }
 #bookmarkModal .modalHeader .title {
   font-size: var(--font-large);
@@ -251,23 +251,25 @@ main .bookList,
   gap: 1rem;
 }
 main .bookList {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
 }
 .modal .bookmarkList {
   grid-template-columns: repeat(3, 1fr);
 }
 .bookWrap .book {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   border-radius: 0.5rem;
   box-shadow: var(--shadow-medium);
   padding: calc(var(--padding-default) / 1.5);
-  padding-bottom: calc(var(--padding-default) * 1.5);
+  padding-bottom: calc(var(--padding-default) * 3);
   position: relative;
   font-size: var(--font-small);
-  color: var(--gray-500);
-  background-color: var(--color-white);
+  color: rgb(var(--gray-500));
+  background-color: rgb(var(--color-white));
 }
 .bookWrap .imageWrap {
   position: relative;
@@ -286,7 +288,13 @@ main .bookList {
 .bookWrap .price {
   font-size: var(--font-medium);
   font-weight: bold;
-  color: var(--color-black);
+  color: rgb(var(--color-black));
+}
+.bookWrap .title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .bookWrap .group > span {
   display: inline-block;
@@ -300,7 +308,7 @@ main .bookList {
   padding: var(--padding-default);
   font-size: var(--font-medium);
   line-height: 1.5;
-  color: var(--color-white);
+  color: rgb(var(--color-white));
   text-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
@@ -319,8 +327,8 @@ main .bookList {
 }
 .bookWrap .like {
   position: absolute;
-  bottom: calc(var(--padding-default) / 3);
-  right: calc(var(--padding-default) / 3);
+  bottom: calc(var(--padding-default) / 4);
+  right: calc(var(--padding-default) / 4);
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -328,7 +336,7 @@ main .bookList {
   justify-content: center;
   align-items: center;
   font-size: var(--font-large);
-  color: var(--gray-300);
+  color: rgb(var(--gray-300));
   transition: background-color 0.3s;
 }
 .bookWrap .like::before {
@@ -340,10 +348,11 @@ main .bookList {
   scale: 1.15;
 }
 .bookWrap .like.on {
-  color: var(--color-primary);
+  color: rgb(var(--color-primary));
 }
 .bookWrap .like:hover {
-  background-color: var(--gray-100);
+  background-color: rgba(var(--gray-100), 0.5);
+  backdrop-filter: blur(2px);
 }
 .bookWrap .like.on:hover::before {
   content: "\f7a9";
@@ -373,7 +382,7 @@ main .bookList:empty ~ .pagination {
   align-items: center;
   gap: 2rem;
   padding: calc(var(--padding-default) * 10) 0;
-  color: var(--gray-500);
+  color: rgb(var(--gray-500));
 }
 .empty .icon {
   font-size: 10rem;
@@ -390,13 +399,13 @@ body:has(.loading) {
   left: 50%;
   translate: -50% -50%;
   font-size: 5rem;
-  color: var(--color-primary);
+  color: rgb(var(--color-primary));
 }
 .loading i {
   animation: loading 1s infinite cubic-bezier(0.51, 0.08, 0.39, 0.89) alternate;
 }
 .loading i:nth-of-type(2n) {
-  color: var(--color-secondary);
+  color: rgb(var(--color-secondary));
 }
 .loading i:nth-of-type(2) {
   animation-delay: 0.5s;
