@@ -16,8 +16,7 @@ const toggle = (id) => {
     remove(id);
   } else {
     if (bookmarkList.size >= MAX_BOOKMARK_LIST_SIZE) {
-      // TODO 사이즈 예외처리 필요
-      return;
+      throw new Error('⛔ 더이상 추가할 수 없습니다.');
     }
     create(id);
   }

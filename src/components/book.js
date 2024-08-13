@@ -4,6 +4,7 @@ import {
   getBookmarkList,
   toggle as toggleBookmark,
 } from '../api/bookmarkStorage.js';
+import { handleToast } from './toast.js';
 
 const MAX_DESC_LENGTH = 50;
 const $bookList = document.querySelector('.bookList');
@@ -49,8 +50,13 @@ const createBookElement = (book) => {
   $book.addEventListener('click', ({ target }) => {
     const $likeBtn = target.closest('.like');
     if ($likeBtn) {
-      toggleBookmark(id);
-      $likeBtn.classList.toggle('on');
+      try {
+        toggleBookmark(id);
+        $likeBtn.classList.toggle('on');
+        handleToast(`✅ 정상적으로 처리되었습니다.`, 'success', 'bottom right');
+      } catch (error) {
+        handleToast(error.message, 'error', 'bottom right');
+      }
       // TODO bookmarkList 내부의 bookmark 해제 시
       //  현재 bookList에 표시되어있는 bookmark도 해제되로록 처리 필요
     }
