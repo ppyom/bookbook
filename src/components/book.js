@@ -1,5 +1,9 @@
 import { loading } from './loading.js';
 import { getList } from '../api/bookAPI.js';
+import {
+  getBookmarkList,
+  toggle as toggleBookmark,
+} from '../api/bookmarkStorage.js';
 
 const MAX_DESC_LENGTH = 50;
 const $bookList = document.querySelector('.bookList');
@@ -38,9 +42,20 @@ const createBookElement = (book) => {
       <span class="publisher">${publisher}</span>
 	  </p>
 	  <a class="more" href="${link}" target="_blank">자세히보기</a>
-	  <button class="like"></button>
+	  <button class="like ${getBookmarkList().includes(id) ? 'on' : ''}"></button>
 	</div>
   `;
+
+  $book.addEventListener('click', ({ target }) => {
+    const $likeBtn = target.closest('.like');
+    if ($likeBtn) {
+      toggleBookmark(id);
+      $likeBtn.classList.toggle('on');
+      // TODO bookmarkList 내부의 bookmark 해제 시
+      //  현재 bookList에 표시되어있는 bookmark도 해제되로록 처리 필요
+    }
+  });
+
   return $book;
 };
 
