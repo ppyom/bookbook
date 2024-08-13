@@ -1,0 +1,422 @@
+@charset "UTF-8";
+
+:root {
+  --color-primary: #ebd19d;
+  --color-primary-light: #f6efdf;
+  --color-secondary: #3f97af;
+  --color-secondary-light: #8fdbef;
+  --color-ivory: #f9f8f5;
+  --color-white: #ffffff;
+  --color-black: #1c1917;
+  --gray-100: #f5f5f4;
+  --gray-300: #d6d3d1;
+  --gray-500: #78716c;
+  --gray-700: #44403c;
+
+  --max-width: 1024px;
+  --padding-default: 1rem;
+
+  --font-small: 0.75rem;
+  --font-medium: 1rem;
+  --font-large: 1.25rem;
+  --font-extra-large: 1.5rem;
+
+  --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.25);
+  --shadow-large: 0 5px 30px rgba(0, 0, 0, 0.25);
+
+  --image-logo: url("../assets/images/logo.svg");
+
+  font-size: 16px;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* Common */
+.mw {
+  max-width: var(--max-width);
+  margin: auto;
+}
+h1 {
+  display: none;
+}
+
+/* Header */
+.header {
+  background-color: var(--color-ivory);
+  box-shadow: var(--shadow-medium);
+  padding: var(--padding-default);
+}
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: var(--padding-default);
+  background-image: var(--image-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center -3px;
+}
+.header .searchForm {
+  display: flex;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-small);
+  position: relative;
+  transition: border-color 0.3s;
+}
+.header .searchForm input {
+  flex: 1;
+  padding: calc(var(--padding-default) / 2);
+  background-color: transparent;
+}
+.header .searchForm input ~ label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: text;
+  color: var(--gray-300);
+}
+.header .searchForm input:not(:placeholder-shown) ~ label {
+  display: none;
+}
+.header .searchForm:has(input:focus) {
+  border-color: var(--color-primary);
+}
+.header .searchForm button {
+  color: var(--color-primary);
+  padding: var(--padding-default) calc(var(--padding-default) * 1.25);
+}
+.header .bookmarkOpenBtn {
+  padding: var(--padding-default);
+  font-size: var(--font-extra-large);
+  color: var(--color-primary);
+}
+@media (max-width: 768px) {
+  .headerInner {
+    position: relative;
+    flex-direction: column;
+  }
+  .header .logo {
+    width: 80px;
+    height: 80px;
+  }
+  .header .searchForm {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .header .searchForm button {
+    padding: var(--padding-default);
+  }
+  .header .bookmarkOpenBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+/* Main */
+main {
+  padding: calc(var(--padding-default) * 2) var(--padding-default);
+}
+main .mainInner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+main .mainInner > .title {
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+main:has(.searchResult.on) .mainInner > .title {
+  display: none;
+}
+main .searchResult {
+  display: none;
+}
+main .searchResult .keyword {
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+main .searchResult.on {
+  display: block;
+}
+main .pagination,
+main .pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+main .pagination button {
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+main .pagination > button:disabled {
+  color: var(--gray-300);
+  cursor: default;
+}
+main .pages button.on {
+  background-color: var(--color-secondary);
+  color: var(--color-ivory);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal.on {
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: all;
+}
+#bookmarkModal {
+  background-color: var(--color-ivory);
+  max-width: var(--max-width);
+  width: calc(100% - var(--padding-default));
+  height: 80%;
+  padding-bottom: calc(var(--padding-default) * 2);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-large);
+  overflow: hidden;
+}
+#bookmarkModal .modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-default);
+  background-color: var(--color-primary);
+  border-bottom: 5px solid var(--color-secondary);
+}
+#bookmarkModal .modalHeader .title {
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+#bookmarkModal .modalHeader .closeBtn {
+  display: block;
+  font-size: var(--font-large);
+  padding: calc(var(--padding-default) / 4);
+}
+#bookmarkModal .main {
+  height: calc(100% - (var(--padding-default) + var(--font-large)));
+  overflow-y: auto;
+  padding: var(--padding-default);
+}
+
+@media (max-width: 768px) {
+  body:has(.modal.on) {
+    overflow: hidden;
+  }
+  #bookmarkModal {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Book */
+main .bookList,
+.modal .bookmarkList {
+  display: grid;
+  gap: 1rem;
+}
+main .bookList {
+  grid-template-columns: repeat(4, 1fr);
+}
+.modal .bookmarkList {
+  grid-template-columns: repeat(3, 1fr);
+}
+.bookWrap .book {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-medium);
+  padding: calc(var(--padding-default) / 1.5);
+  padding-bottom: calc(var(--padding-default) * 1.5);
+  position: relative;
+  font-size: var(--font-small);
+  color: var(--gray-500);
+  background-color: var(--color-white);
+}
+.bookWrap .imageWrap {
+  position: relative;
+  padding-top: 120%;
+  overflow: hidden;
+}
+.bookWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bookWrap .title,
+.bookWrap .price {
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: var(--color-black);
+}
+.bookWrap .group > span {
+  display: inline-block;
+}
+.bookWrap .description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: var(--padding-default);
+  font-size: var(--font-medium);
+  line-height: 1.5;
+  color: var(--color-white);
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bookWrap:hover:not(:has(.like:hover)) .description {
+  opacity: 1;
+}
+.bookWrap .more {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+}
+.bookWrap .like {
+  position: absolute;
+  bottom: calc(var(--padding-default) / 3);
+  right: calc(var(--padding-default) / 3);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-large);
+  color: var(--gray-300);
+  transition: background-color 0.3s;
+}
+.bookWrap .like::before {
+  content: "\f004";
+  font-weight: 900;
+  font-family: "Font Awesome 6 free", emoji;
+}
+.bookWrap .like:hover::before {
+  scale: 1.15;
+}
+.bookWrap .like.on {
+  color: var(--color-primary);
+}
+.bookWrap .like:hover {
+  background-color: var(--gray-100);
+}
+.bookWrap .like.on:hover::before {
+  content: "\f7a9";
+}
+
+@media (max-width: 768px) {
+  main .bookList,
+  .modal .bookmarkList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  main .bookList,
+  .modal .bookmarkList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Empty */
+main .bookList:empty ~ .pagination {
+  display: none;
+}
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: calc(var(--padding-default) * 10) 0;
+  color: var(--gray-500);
+}
+.empty .icon {
+  font-size: 10rem;
+}
+
+/* Loading */
+body:has(.loading) {
+  pointer-events: none;
+  user-select: none;
+}
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 5rem;
+  color: var(--color-primary);
+}
+.loading i {
+  animation: loading 1s infinite cubic-bezier(0.51, 0.08, 0.39, 0.89) alternate;
+}
+.loading i:nth-of-type(2n) {
+  color: var(--color-secondary);
+}
+.loading i:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+.loading i:nth-of-type(3) {
+  animation-delay: 1s;
+}
+.loading i:nth-of-type(4) {
+}
+
+@media (max-width: 768px) {
+  .loading {
+    font-size: 2.5rem;
+  }
+}
+@keyframes loading {
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 0 1rem;
+  }
+}

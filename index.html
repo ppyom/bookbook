@@ -6,6 +6,47 @@
     <title>BookBook</title>
     <link rel="icon" type="image/x-icon" href="./src/assets/images/logo.svg" />
     <link rel="stylesheet" href="./src/styles/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./src/styles/style.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <div class="mw headerInner">
+        <a class="logo" href="#">
+          <h1>BookBook</h1>
+        </a>
+        <form id="searchForm" class="searchForm">
+          <input id="searchInput" type="text" placeholder=" " />
+          <label for="searchInput">검색어를 입력해주세요.</label>
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+        <button class="bookmarkOpenBtn">
+          <i class="fa-solid fa-heart"></i>
+        </button>
+      </div>
+    </header>
+    <main>
+      <div class="mw mainInner">
+        <p class="title">신상품</p>
+        <p class="searchResult">
+          "<span class="keyword"></span>"에 대한 검색 결과입니다.
+        </p>
+        <ul class="bookList"></ul>
+        <div class="pagination">
+          <button disabled><i class="fa-solid fa-arrow-left"></i></button>
+          <div class="pages"></div>
+          <button><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </main>
+    <div class="modal"></div>
+  </body>
 </html>
