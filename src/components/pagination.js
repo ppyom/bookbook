@@ -1,4 +1,5 @@
 import { renderBookList } from './book.js';
+import { keyword } from './searchForm.js';
 
 const $pagination = document.querySelector('.pagination');
 const $prev = $pagination.querySelector('.prev');
@@ -16,7 +17,8 @@ const updatePageGroup = (page) => Math.ceil(page / groupSize);
 
 const move = (page) => {
   currentPage = parseInt(page);
-  renderBookList({ page: currentPage }).then(updatePagination);
+  renderBookList({ query: keyword, page: currentPage }) //
+    .then(updatePagination);
 };
 
 const initPagination = (totalResults) => {

@@ -84,7 +84,7 @@ h1 {
 }
 .header .searchForm input {
   flex: 1;
-  padding: calc(var(--padding-default) / 2);
+  padding: calc(var(--padding-default));
   background-color: transparent;
 }
 .header .searchForm input ~ label {

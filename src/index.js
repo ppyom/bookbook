@@ -5,7 +5,6 @@ const init = () => {
   // api에서 데이터 불러와서 화면(리스트)에 출력
   renderBookList().then((data) => {
     const { totalResults } = data;
-    console.log('init pagination');
     initPagination(totalResults);
   });
 };
