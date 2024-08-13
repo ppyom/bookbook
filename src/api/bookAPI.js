@@ -1,4 +1,6 @@
-const baseurl = 'http://localhost:8081';
+import config from '../config.js';
+
+const baseurl = config.api.baseurl;
 
 const getItemList = async (options) => {
   const { type = 'ItemNewAll', page, sort } = options;
