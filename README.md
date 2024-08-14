@@ -1,16 +1,20 @@
 # BookBook
 
+<div style="text-align: center;">
+
 ![로고](./src/assets/images/logo.svg)
 
-[데모 사이트로 이동](https://bookbook-rho.vercel.app/)
+[Demo](https://bookbook-rho.vercel.app/)
 
 ![HTML](https://img.shields.io/badge/HTML5-ffffff?style=flat-square&logo=HTML5&logoColor=ffffff&labelColor=E34C26&color=E34C26)
 ![CSS](https://img.shields.io/badge/CSS3-ffffff?style=flat-square&logo=CSS3&logoColor=ffffff&labelColor=2965f1&color=2965f1)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ffffff?style=flat-square&logo=JavaScript&logoColor=323330&labelColor=f0db4f&color=f0db4f)
 
+</div>
+
 BookBook은 책을 좋아하는 사용자들이 신간 도서 또는 검색된 도서 목록을 통해 내가 보고싶은 책을 즐겨찾기에 등록하고, 이후 즐겨찾기에 등록한 책을 편리하게 찾을 수 있도록 도와주는 웹사이트 입니다.
 
-## 주요 기능
+## 💡 주요 기능
 
 ### 신간 도서
 
@@ -26,7 +30,7 @@ BookBook은 책을 좋아하는 사용자들이 신간 도서 또는 검색된 �
 - 오른쪽 상단의 하트 버튼을 클릭하면 bookmark modal이 open되어 저장한 bookmark list를 확인할 수 있습니다.
 - 즐겨찾기는 최대 20개 까지 저장할 수 있습니다.
 
-## 실행 방법
+## ▶️ 실행 방법
 
 1. server([bookbook-server](https://github.com/ppyom/bookbook-server))를 먼저 설정합니다.
 2. `npm i`를 입력해 필요한 라이브러리를 설치합니다.
