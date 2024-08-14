@@ -1,6 +1,6 @@
 # BookBook
 
-<div style="text-align: center;">
+<div align="center">
 
 ![로고](./src/assets/images/logo.svg)
 
