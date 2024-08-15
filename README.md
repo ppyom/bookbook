@@ -36,4 +36,28 @@ BookBook은 책을 좋아하는 사용자들이 신간 도서 또는 검색된 �
 2. `npm i`를 입력해 필요한 라이브러리를 설치합니다.
    - live-server, prettier
 3. `config.js` 파일의 **api.baseurl**을 1에서 실행시킨 서버의 주소로 변경합니다.
+   - 이 때 trailing slash는 붙이지 않습니다.
+   - ✅`https://example.com`, ❌`https://example.com/`
 4. `npm run dev`를 입력해 서버를 실행합니다.
+
+## 🧾 오류 해결 방법
+
+1. 처음 실행했는데 로딩 UI 이후 아무것도 나오지 않습니다.
+
+   1. `ERR_CONNECTION_REFUSED`
+
+      > `ERR_CONNECTION_REFUSED`의 경우 서버와 연결할 수 없을 때 발생합니다.
+
+      - 서버 url로 접근해 서버가 실행되고있는지 확인하고, 실행되어있지 않다면 실행합니다.
+      - 서버를 설정하지 않은 경우, [서버 설정](https://github.com/ppyom/bookbook-server?tab=readme-ov-file#%EF%B8%8F-%EC%8B%A4%ED%96%89-%EB%B0%A9%EB%B2%95)을 완료하고 서버를 실행합니다.
+
+   2. `CORS`
+
+      > 현재 프로젝트에서 CORS 관련 오류는 서버가 허용하지 않은 url에서 서버에 접근할 때 발생할 수 있습니다.
+      >
+      > 서버를 실행하지 않은 경우, 설치 후 `config.js` 파일을 수정하지 않은 경우, 서버에서 환경 변수 파일을 설정하지 않은 상황에서 발생합니다.
+
+      - [서버](https://github.com/ppyom/bookbook-server)를 설정하지 않았다면 서버를 설정하고 실행합니다.
+      - `config.js` 파일의 **api.baseurl**을 서버 url로 변경합니다.
+      - 서버의 `.env` 파일의 **CLIENT_URL**을 현재 접속한 url로 변경합니다.
+        - `.env` 파일을 수정한 경우 서버 재시작이 필요합니다.
