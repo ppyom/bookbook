@@ -47,18 +47,29 @@ const createBookElement = (book) => {
 	</div>
   `;
 
+  const updateBookmark = () => {
+    $bookList.querySelectorAll('.book:has(.like.on)').forEach(($book) => {
+      $book
+        .querySelector('.like')
+        .classList.toggle('on', getBookmarkList().includes(id));
+    });
+  };
+
   $book.addEventListener('click', ({ target }) => {
     const $likeBtn = target.closest('.like');
     if ($likeBtn) {
       try {
         toggleBookmark(id);
         $likeBtn.classList.toggle('on');
+        const $removed = $likeBtn.closest('.bookWrap:not(:has(.like.on))');
+        if (!!$removed) {
+          $removed.remove();
+        }
+        updateBookmark();
         handleToast(`✅ 정상적으로 처리되었습니다.`, 'success', 'bottom right');
       } catch (error) {
         handleToast(error.message, 'error', 'bottom right');
       }
-      // TODO bookmarkList 내부의 bookmark 해제 시
-      //  현재 bookList에 표시되어있는 bookmark도 해제되로록 처리 필요
     }
   });
 
