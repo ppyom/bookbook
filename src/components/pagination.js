@@ -63,6 +63,10 @@ const updatePagination = () => {
 
   $prev.disabled = currentPage === 1;
   $next.disabled = currentPage === totalPage;
+
+  scrollTo({
+    top: 0,
+  });
 };
 
 $prev.addEventListener('click', () => move(currentPage - 1));
