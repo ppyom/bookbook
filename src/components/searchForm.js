@@ -3,7 +3,7 @@ import { initPagination } from './pagination.js';
 import { handleToast } from './toast.js';
 
 const MIN_KEYWORD_LENGTH = 1;
-const MAX_KEYWORD_LENGTH = 30;
+const MAX_KEYWORD_LENGTH = 25;
 
 const $searchForm = document.getElementById('searchForm');
 const $searchResult = document.querySelector('.searchResult');

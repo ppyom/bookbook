@@ -213,6 +213,10 @@ main .pages button.on {
   box-shadow: var(--shadow-large);
   overflow: hidden;
 }
+#bookmarkModal h2 {
+  width: 100%;
+  text-align: center;
+}
 #bookmarkModal .modalHeader {
   display: flex;
   justify-content: space-between;
@@ -308,6 +312,10 @@ main .bookList {
   left: 0;
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: var(--padding-default);
   font-size: var(--font-medium);
   line-height: 1.5;
