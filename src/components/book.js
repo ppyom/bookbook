@@ -8,6 +8,14 @@ import { handleToast } from './toast.js';
 
 const MAX_DESC_LENGTH = 50;
 const $bookList = document.querySelector('.bookList');
+const bookMap = new Map();
+
+const updateBookmark = (id) => {
+  bookMap
+    .get(id)
+    .querySelector('.like')
+    .classList.toggle('on', getBookmarkList().includes(id));
+};
 
 const createBookElement = (book) => {
   const {
@@ -47,13 +55,7 @@ const createBookElement = (book) => {
 	</div>
   `;
 
-  const updateBookmark = () => {
-    $bookList.querySelectorAll('.book:has(.like.on)').forEach(($book) => {
-      $book
-        .querySelector('.like')
-        .classList.toggle('on', getBookmarkList().includes(id));
-    });
-  };
+  bookMap.has(id) || bookMap.set(id, $book);
 
   $book.addEventListener('click', ({ target }) => {
     const $likeBtn = target.closest('.like');
@@ -61,18 +63,19 @@ const createBookElement = (book) => {
       try {
         toggleBookmark(id);
         $likeBtn.classList.toggle('on');
-        const $removed = $likeBtn.closest('.bookWrap:not(:has(.like.on))');
+        const $removed = $likeBtn.closest(
+          '.modal .bookWrap:not(:has(.like.on))',
+        );
         if (!!$removed) {
           $removed.remove();
+          updateBookmark(id);
         }
-        updateBookmark();
         handleToast(`✅ 정상적으로 처리되었습니다.`, 'success', 'bottom right');
       } catch (error) {
         handleToast(error.message, 'error', 'bottom right');
       }
     }
   });
-
   return $book;
 };
 
@@ -83,6 +86,7 @@ const renderBookList = async (options, $target = $bookList) => {
         getList(options).then((data) => {
           const { item } = data;
           $target.innerHTML = '';
+          bookMap.clear();
           $target.append(...item.map(createBookElement));
           return data;
         }),
