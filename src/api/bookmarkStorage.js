@@ -12,6 +12,9 @@ const getBookmarkList = () => {
   return Array.from(bookmarkList);
 };
 const toggle = (id) => {
+  if (!id) {
+    throw new Error('⛔ 해당 상품은 추가할 수 없습니다.');
+  }
   if (bookmarkList.has(id)) {
     remove(id);
   } else {
