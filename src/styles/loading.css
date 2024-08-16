@@ -1,0 +1,42 @@
+/* Loading */
+body:has(.loading) {
+  pointer-events: none;
+  user-select: none;
+}
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 5rem;
+  color: rgb(var(--color-primary));
+}
+.loading i {
+  animation: loading 1s infinite cubic-bezier(0.51, 0.08, 0.39, 0.89) alternate;
+}
+.loading i:nth-of-type(2n) {
+  color: rgb(var(--color-secondary));
+}
+.loading i:nth-of-type(2) {
+  animation-delay: 0.5s;
+}
+.loading i:nth-of-type(3) {
+  animation-delay: 1s;
+}
+.loading i:nth-of-type(4) {
+}
+
+@media (max-width: 768px) {
+  .loading {
+    font-size: 2.5rem;
+  }
+}
+
+@keyframes loading {
+  0% {
+    translate: 0;
+  }
+  100% {
+    translate: 0 1rem;
+  }
+}

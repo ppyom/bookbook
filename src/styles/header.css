@@ -1,0 +1,85 @@
+/* Header */
+.header {
+  background-color: rgb(var(--color-ivory));
+  box-shadow: var(--shadow-medium);
+  padding: var(--padding-default);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.headerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .logo {
+  display: block;
+  width: 50px;
+  height: 50px;
+  padding: var(--padding-default);
+  background-image: var(--image-logo);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center -3px;
+}
+.header .searchForm {
+  display: flex;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  background-color: rgb(var(--color-white));
+  box-shadow: var(--shadow-small);
+  position: relative;
+  transition: border-color 0.3s;
+}
+.header .searchForm input {
+  flex: 1;
+  padding: calc(var(--padding-default));
+  background-color: transparent;
+}
+.header .searchForm input ~ label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: text;
+  color: rgb(var(--gray-300));
+}
+.header .searchForm input:not(:placeholder-shown) ~ label {
+  display: none;
+}
+.header .searchForm:has(input:focus) {
+  border-color: rgb(var(--color-primary));
+}
+.header .searchForm button {
+  color: rgb(var(--color-primary));
+  padding: var(--padding-default) calc(var(--padding-default) * 1.25);
+}
+.header .bookmarkOpenBtn {
+  padding: var(--padding-default);
+  font-size: var(--font-extra-large);
+  color: rgb(var(--color-primary));
+}
+@media (max-width: 768px) {
+  .headerInner {
+    position: relative;
+    flex-direction: column;
+  }
+  .header .logo {
+    width: 80px;
+    height: 80px;
+  }
+  .header .searchForm {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .header .searchForm button {
+    padding: var(--padding-default);
+  }
+  .header .bookmarkOpenBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,115 @@
+/* Main */
+main {
+  padding: calc(var(--padding-default) * 2) var(--padding-default);
+}
+main .mainInner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+main .mainInner > .title {
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+main:has(.searchResult.on) .mainInner > .title {
+  display: none;
+}
+main .searchResult {
+  display: none;
+}
+main .searchResult .keyword {
+  font-weight: bold;
+  color: rgb(var(--color-secondary));
+}
+main .searchResult.on {
+  display: block;
+}
+main .pagination,
+main .pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+main .pagination button {
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+main .pagination > button:disabled {
+  color: rgb(var(--gray-300));
+  cursor: default;
+}
+main .pages button.on {
+  background-color: rgb(var(--color-secondary));
+  color: rgb(var(--color-ivory));
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal.on {
+  z-index: 9999;
+  opacity: 1;
+  pointer-events: all;
+}
+#bookmarkModal {
+  background-color: rgb(var(--color-ivory));
+  max-width: var(--max-width);
+  width: calc(100% - var(--padding-default));
+  height: 80%;
+  padding-bottom: calc(var(--padding-default) * 2);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-large);
+  overflow: hidden;
+}
+#bookmarkModal h2 {
+  width: 100%;
+  text-align: center;
+}
+#bookmarkModal .modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--padding-default);
+  background-color: rgb(var(--color-primary));
+  border-bottom: 5px solid rgb(var(--color-secondary));
+}
+#bookmarkModal .modalHeader .title {
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+#bookmarkModal .modalHeader .closeBtn {
+  display: block;
+  font-size: var(--font-large);
+  padding: calc(var(--padding-default) / 4);
+}
+#bookmarkModal .main {
+  height: calc(100% - (var(--padding-default) + var(--font-large)));
+  overflow-y: auto;
+  padding: var(--padding-default);
+}
+
+@media (max-width: 768px) {
+  body:has(.modal.on) {
+    overflow: hidden;
+  }
+  #bookmarkModal {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

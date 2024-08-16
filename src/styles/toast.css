@@ -1,0 +1,47 @@
+/* Toast */
+.toast {
+  position: fixed;
+  z-index: 9999;
+  max-width: 500px;
+  width: calc(100% - var(--padding-default) * 2);
+  padding: var(--padding-default);
+  backdrop-filter: blur(5px);
+  scale: 1 0;
+  transition: scale 0.3s;
+}
+.toast.on {
+  scale: 1;
+}
+.toast.success {
+  background-color: rgba(0, 255, 0, 0.25);
+}
+.toast.error {
+  background-color: rgba(255, 0, 0, 0.25);
+}
+.toast.center {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.toast.top {
+  transform-origin: top;
+  top: calc(50px + var(--padding-default) * 4);
+}
+.toast.bottom {
+  transform-origin: bottom;
+  bottom: calc(var(--padding-default) * 4);
+}
+.toast.left {
+  left: var(--padding-default);
+}
+.toast.right {
+  right: var(--padding-default);
+}
+@media (max-width: 768px) {
+  .toast.top {
+    top: calc(50px + var(--padding-default) * 10);
+  }
+  .toast.bottom {
+    bottom: var(--padding-default);
+  }
+}

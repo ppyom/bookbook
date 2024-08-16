@@ -1,0 +1,131 @@
+/* Book */
+main .bookList,
+.modal .bookmarkList {
+  display: grid;
+  gap: 1rem;
+}
+main .bookList {
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+}
+.modal .bookmarkList {
+  grid-template-columns: repeat(3, 1fr);
+}
+.bookWrap .book {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-medium);
+  padding: calc(var(--padding-default) / 1.5);
+  padding-bottom: calc(var(--padding-default) * 3);
+  position: relative;
+  font-size: var(--font-small);
+  color: rgb(var(--gray-500));
+  background-color: rgb(var(--color-white));
+}
+.bookWrap .imageWrap {
+  position: relative;
+  padding-top: 120%;
+  overflow: hidden;
+}
+.bookWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bookWrap .title,
+.bookWrap .price {
+  font-size: var(--font-medium);
+  font-weight: bold;
+  color: rgb(var(--color-black));
+}
+.bookWrap .title {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.bookWrap .group > span {
+  display: inline-block;
+}
+.bookWrap .description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--padding-default);
+  font-size: var(--font-medium);
+  line-height: 1.5;
+  color: rgb(var(--color-white));
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.bookWrap:hover:not(:has(.like:hover)) .description {
+  opacity: 1;
+}
+.bookWrap .more {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+}
+.bookWrap .like {
+  position: absolute;
+  bottom: calc(var(--padding-default) / 4);
+  right: calc(var(--padding-default) / 4);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-large);
+  color: rgb(var(--gray-300));
+  transition: background-color 0.3s;
+}
+.bookWrap .like::before {
+  content: "\f004";
+  font-weight: 900;
+  font-family: "Font Awesome 6 free", emoji;
+}
+.bookWrap .like:hover::before {
+  scale: 1.15;
+}
+.bookWrap .like.on {
+  color: rgb(var(--color-primary));
+}
+.bookWrap .like:hover {
+  background-color: rgba(var(--gray-100), 0.5);
+  backdrop-filter: blur(2px);
+}
+.bookWrap .like.on:hover::before {
+  content: "\f7a9";
+}
+
+@media (max-width: 768px) {
+  main .bookList,
+  .modal .bookmarkList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  main .bookList,
+  .modal .bookmarkList {
+    grid-template-columns: 1fr;
+  }
+}
