@@ -1,6 +1,7 @@
 import { getBookmarkList } from '../api/bookmarkStorage.js';
 import { createBookElement } from './book.js';
 import { getItem } from '../api/bookAPI.js';
+import { loading } from './loading.js';
 
 const $modal = document.querySelector('.modal');
 
@@ -38,7 +39,10 @@ const handleOpenAndCreateBookmarkModal = async () => {
     $modal.classList.remove('on');
     setTimeout(() => $target.remove(), 300); // 부드럽게 삭제
   });
-  $bookmarkList.append(...(await getBookmarkBookList()));
+  const $books = await loading(
+    new Promise((resolve) => resolve(getBookmarkBookList())),
+  );
+  $bookmarkList.append(...$books);
   $modal.appendChild($target);
   $modal.classList.add('on');
 };
