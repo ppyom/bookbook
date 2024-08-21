@@ -39,9 +39,7 @@ const handleOpenAndCreateBookmarkModal = async () => {
     $modal.classList.remove('on');
     setTimeout(() => $target.remove(), 300); // 부드럽게 삭제
   });
-  const $books = await loading(
-    new Promise((resolve) => resolve(getBookmarkBookList())),
-  );
+  const $books = await loading(getBookmarkBookList());
   $bookmarkList.append(...$books);
   $modal.appendChild($target);
   $modal.classList.add('on');

@@ -81,17 +81,13 @@ const createBookElement = (book) => {
 
 const renderBookList = async (options, $target = $bookList) => {
   return loading(
-    new Promise((resolve) =>
-      resolve(
-        getList(options).then((data) => {
-          const { item } = data;
-          $target.innerHTML = '';
-          bookMap.clear();
-          $target.append(...item.map(createBookElement));
-          return data;
-        }),
-      ),
-    ),
+    getList(options).then((data) => {
+      const { item } = data;
+      $target.innerHTML = '';
+      bookMap.clear();
+      $target.append(...item.map(createBookElement));
+      return data;
+    }),
   );
 };
 
