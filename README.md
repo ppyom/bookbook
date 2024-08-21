@@ -4,7 +4,7 @@
 
 ![로고](./src/assets/images/logo.svg)
 
-[![Notion](https://img.shields.io/badge/Demo-ffffff?style=flat-square&color=21201f)](https://bookbook-rho.vercel.app/) / [![Notion](https://img.shields.io/badge/프로젝트-ffffff?style=flat-square&logo=Notion&logoColor=000000&labelColor=ffffff&color=ffffff)](https://radical-devourer-8fb.notion.site/BookBook-bc214ebccb674803a5eb7f69ff3b7120)
+[![Demo](https://img.shields.io/badge/Demo-ffffff?style=flat-square&color=21201f)](https://bookbook.ppyom.com/) / [![Notion](https://img.shields.io/badge/프로젝트-ffffff?style=flat-square&logo=Notion&logoColor=000000&labelColor=ffffff&color=ffffff)](https://radical-devourer-8fb.notion.site/BookBook-bc214ebccb674803a5eb7f69ff3b7120)
 
 ![HTML](https://img.shields.io/badge/HTML5-ffffff?style=flat-square&logo=HTML5&logoColor=ffffff&labelColor=E34C26&color=E34C26)
 ![CSS](https://img.shields.io/badge/CSS3-ffffff?style=flat-square&logo=CSS3&logoColor=ffffff&labelColor=2965f1&color=2965f1)
